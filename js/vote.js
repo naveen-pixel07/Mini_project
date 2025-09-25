@@ -4,8 +4,9 @@
 let web3;
 let votingContract;
 
-// Replace these with your deployed contract info
-const contractAddress = [
+// Replace CONTRACT_ADDRESS with your deployed contract address
+const CONTRACT_ADDRESS = "0xYourDeployedContractAddress"; // TODO: set real address
+const contractABI = [
   {
     "inputs": [],
     "stateMutability": "nonpayable",
@@ -117,7 +118,6 @@ const contractAddress = [
     "type": "function"
   }
 ];
-const contractABI = 0xd2a5bC10698FD955D1Fe6cb468a17809A08fd005;
 
 async function init() {
     if (typeof window.ethereum === "undefined") {
@@ -128,7 +128,7 @@ async function init() {
     web3 = new Web3(window.ethereum);
     await window.ethereum.enable();
 
-    votingContract = new web3.eth.Contract(contractABI, contractAddress);
+    votingContract = new web3.eth.Contract(contractABI, CONTRACT_ADDRESS);
 
     loadCandidates();
 }
@@ -158,6 +158,28 @@ async function castVote(id) {
     const voter = accounts[0];
 
     try {
+        // Auto-fund if low balance (optional UX improvement)
+        const balanceWei = await web3.eth.getBalance(voter);
+        const hasGas = BigInt(balanceWei) > BigInt(1_000_000_000_000_00); // ~0.0001 ETH
+        if (!hasGas) {
+            try {
+                await fetch("http://localhost:4000/fund", {
+                    method: 'POST', headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ to: voter, amount: '0.01' })
+                });
+                showToast("Funding your wallet... retrying in 3s", "success");
+                await new Promise(r => setTimeout(r, 3000));
+            } catch (_) {}
+        }
+
+        // Require OTP verification before allowing vote
+        const otpVerified = sessionStorage.getItem("otpVerified");
+        if (otpVerified !== "true") {
+            showToast("Complete OTP verification first.", "error");
+            window.location.href = "login.html";
+            return;
+        }
+
         await votingContract.methods.vote(id).send({ from: voter });
         showToast("Vote cast successfully ✅", "success");
         setTimeout(() => {

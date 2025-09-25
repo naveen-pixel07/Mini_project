@@ -2,6 +2,7 @@
 pragma solidity ^0.8.20;
 
 contract Voting {
+    address public owner;
     struct Candidate {
         uint id;
         string name;
@@ -14,16 +15,28 @@ contract Voting {
     uint public candidatesCount;
 
     event VoteCasted(address voter, uint candidateId);
+    event CandidateAdded(uint id, string name, string party);
 
-    constructor() {
-        addCandidate("Alice Johnson", "Party A");
-        addCandidate("Bob Smith", "Party B");
-        addCandidate("Charlie Brown", "Party C");
+    modifier onlyOwner() {
+        require(msg.sender == owner, "Not owner");
+        _;
     }
 
-    function addCandidate(string memory _name, string memory _party) private {
+    constructor() {
+        owner = msg.sender;
+        _addCandidate("Alice Johnson", "Party A");
+        _addCandidate("Bob Smith", "Party B");
+        _addCandidate("Charlie Brown", "Party C");
+    }
+
+    function _addCandidate(string memory _name, string memory _party) private {
         candidatesCount++;
         candidates[candidatesCount] = Candidate(candidatesCount, _name, _party, 0);
+        emit CandidateAdded(candidatesCount, _name, _party);
+    }
+
+    function addCandidate(string memory _name, string memory _party) external onlyOwner {
+        _addCandidate(_name, _party);
     }
 
     function vote(uint _candidateId) public {

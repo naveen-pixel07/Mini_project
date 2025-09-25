@@ -1,8 +1,8 @@
 body {
   font-family: 'Poppins', sans-serif;
   margin: 0;
-  background: linear-gradient(135deg, #d4fc79, #96e6a1);
-  color: #2c3e50;
+  background: #f5f7fa;
+  color: #1f2a44;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -11,11 +11,13 @@ body {
 header {
   text-align: center;
   padding: 20px;
+  background: #0b3d91; /* Government blue */
+  color: #ffffff;
 }
 
 header h1 {
   font-size: 2.2rem;
-  color: #1a531b;
+  color: #ffffff;
 }
 
 .logo {
@@ -24,12 +26,12 @@ header h1 {
 }
 
 .card {
-  background: white;
+  background: #ffffff;
   max-width: 450px;
   margin: 80px auto;
   padding: 40px;
-  border-radius: 15px;
-  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
 }
 
 .card h2 {
@@ -39,23 +41,24 @@ header h1 {
 .btn-group button {
   padding: 12px 25px;
   margin: 10px;
-  background: #27ae60;
-  color: white;
+  background: #0b3d91; /* primary */
+  color: #ffffff;
   font-size: 1rem;
   border: none;
   cursor: pointer;
-  border-radius: 8px;
+  border-radius: 6px;
 }
 
 .btn-group button:hover {
-  background: #1f8a4c;
+  background: #093273;
 }
 
 footer {
   text-align: center;
   padding: 15px;
   margin-top: auto;
-  background: rgba(255, 255, 255, 0.3);
+  background: #0b3d91;
+  color: #ffffff;
 }
 
 
@@ -66,8 +69,8 @@ footer {
   bottom: 30px;
   left: 50%;
   transform: translateX(-50%) translateY(100px);
-  background: #27ae60;
-  color: white;
+  background: #0b3d91;
+  color: #ffffff;
   padding: 15px 25px;
   border-radius: 8px;
   opacity: 0;
@@ -77,7 +80,7 @@ footer {
 }
 
 .toast.error {
-  background: #e74c3c;
+  background: #b00020; /* accessible error */
 }
 
 .toast.show {

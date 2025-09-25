@@ -4,7 +4,9 @@
 let web3Result;
 let votingContractResult;
 
-const contractAddress = [
+// Replace CONTRACT_ADDRESS with your deployed contract address
+const CONTRACT_ADDRESS = "0xYourDeployedContractAddress"; // TODO: set real address
+const contractABI = [
   {
     "inputs": [],
     "stateMutability": "nonpayable",
@@ -116,14 +118,13 @@ const contractAddress = [
     "type": "function"
   }
 ]; 
-const contractABI = 0xd2a5bC10698FD955D1Fe6cb468a17809A08fd005;
 
 async function loadResults() {
     if (typeof window.ethereum === "undefined") return;
 
     web3Result = new Web3(window.ethereum);
     await window.ethereum.enable();
-    votingContractResult = new web3Result.eth.Contract(contractABI, contractAddress);
+    votingContractResult = new web3Result.eth.Contract(contractABI, CONTRACT_ADDRESS);
 
     const count = await votingContractResult.methods.candidatesCount().call();
     const resultsContainer = document.getElementById("results");

@@ -9,6 +9,7 @@
 <body>
   <div class="form-container">
     <h2>User Login 🔑</h2>
+<<<<<<< HEAD
     
     <!-- Role Display Section -->
     <div class="role-display" style="text-align: center; margin: 15px 0; padding: 15px; background: #e6eef9; border-radius: 8px; border: 1px solid #c3c9d5;">
@@ -52,3 +53,29 @@
   </script>
 </body>
 </html>
+=======
+    <form id="loginForm">
+      <select id="role" style="width:100%;padding:12px;margin:10px 0;border-radius:8px;border:1px solid #ccc;font-size:1rem;">
+        <option value="user">Voter</option>
+        <option value="admin">Admin</option>
+      </select>
+      <input id="aadhaarOrMobile" type="text" placeholder="Aadhaar Number or Mobile" required>
+      <div style="display:flex; gap:10px; align-items:center;">
+        <input id="otpInput" type="text" placeholder="Enter OTP" style="flex:1;">
+        <button id="sendOtpBtn">Send OTP</button>
+        <button id="verifyOtpBtn">Verify OTP</button>
+      </div>
+    </form>
+    <button id="connectWallet">Connect MetaMask</button>
+    <p>Not registered? <a href="register.html">Register here</a></p>
+  </div>
+
+  <div class="quote">
+    <p>“Democracy is not just the right to vote, it is the right to live in dignity.”</p>
+  </div>
+
+  <script src="js/metamask.js"></script>
+  <script src="js/auth.js"></script>
+</body>
+</html>
+>>>>>>> 04b8ef9195580d9cc9cc43badc772ebc02bb6cc5

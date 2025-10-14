@@ -32,6 +32,7 @@ const contractABI = [
     "type": "event"
   },
   {
+<<<<<<< HEAD
     "anonymous": false,
     "inputs": [
       {
@@ -57,6 +58,8 @@ const contractABI = [
     "type": "event"
   },
   {
+=======
+>>>>>>> 04b8ef9195580d9cc9cc43badc772ebc02bb6cc5
     "inputs": [
       {
         "internalType": "uint256",
@@ -141,6 +144,7 @@ const contractABI = [
     ],
     "stateMutability": "view",
     "type": "function"
+<<<<<<< HEAD
   },
   {
     "inputs": [
@@ -172,6 +176,8 @@ const contractABI = [
     ],
     "stateMutability": "view",
     "type": "function"
+=======
+>>>>>>> 04b8ef9195580d9cc9cc43badc772ebc02bb6cc5
   }
 ];
 

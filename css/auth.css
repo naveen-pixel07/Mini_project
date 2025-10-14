@@ -1,6 +1,7 @@
 body {
   font-family: 'Poppins', sans-serif;
   margin: 0;
+<<<<<<< HEAD
   background: linear-gradient(135deg, #4776E6 0%, #8E54E9 100%);
   display: flex;
   justify-content: center;
@@ -62,6 +63,23 @@ body::before {
 .form-container:hover {
   transform: translateY(-2px);
   box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(255, 255, 255, 0.3);
+=======
+  background: #f5f7fa;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  padding-top: 50px;
+}
+
+.form-container {
+  background: #ffffff;
+  width: 400px;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  text-align: center;
+>>>>>>> 04b8ef9195580d9cc9cc43badc772ebc02bb6cc5
 }
 
 h2 {
@@ -71,6 +89,7 @@ h2 {
 
 input, button {
   width: 100%;
+<<<<<<< HEAD
   padding: 15px 20px;
   margin: 12px 0;
   border-radius: 12px;
@@ -97,10 +116,22 @@ input:hover {
 
 button {
   background: linear-gradient(135deg, #4776E6, #0b3d91);
+=======
+  padding: 12px;
+  margin: 10px 0;
+  border-radius: 6px;
+  border: 1px solid #c3c9d5;
+  font-size: 1rem;
+}
+
+button {
+  background: #0b3d91;
+>>>>>>> 04b8ef9195580d9cc9cc43badc772ebc02bb6cc5
   color: #ffffff;
   border: none;
   cursor: pointer;
   font-weight: 600;
+<<<<<<< HEAD
   position: relative;
   overflow: hidden;
   box-shadow: 0 8px 25px rgba(11, 61, 145, 0.3);
@@ -142,11 +173,18 @@ button:hover {
 button:active {
   transform: translateY(0);
   box-shadow: 0 4px 15px rgba(11, 61, 145, 0.3);
+=======
+}
+
+button:hover {
+  background: #093273;
+>>>>>>> 04b8ef9195580d9cc9cc43badc772ebc02bb6cc5
 }
 
 a {
   color: #0b3d91;
   font-weight: 600;
+<<<<<<< HEAD
   text-decoration: none;
 }
 
@@ -212,3 +250,16 @@ a:hover {
     font-size: 0.9rem;
   }
 }
+=======
+}
+
+.quote {
+  position: absolute;
+  bottom: 20px;
+  text-align: center;
+  width: 100%;
+  font-style: italic;
+  color: #1f2a44;
+  font-size: 1rem;
+}
+>>>>>>> 04b8ef9195580d9cc9cc43badc772ebc02bb6cc5

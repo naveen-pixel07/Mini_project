@@ -17,8 +17,16 @@ async function connectWallet() {
     }
 }
 
+<<<<<<< HEAD
 // Export the connectWallet function for use in other files
 window.connectWallet = connectWallet;
+=======
+// Connect wallet button
+const walletBtn = document.getElementById("connectWallet");
+if (walletBtn) {
+    walletBtn.addEventListener("click", connectWallet);
+}
+>>>>>>> 04b8ef9195580d9cc9cc43badc772ebc02bb6cc5
 
 // Toast function (same style)
 function showToast(message, type = "success") {

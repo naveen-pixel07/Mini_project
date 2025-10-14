@@ -23,4 +23,8 @@
   "devDependencies": {
     "concurrently": "^8.2.2"
   }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 04b8ef9195580d9cc9cc43badc772ebc02bb6cc5

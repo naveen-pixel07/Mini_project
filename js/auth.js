@@ -14,6 +14,7 @@ function showToast(message, type = "success") {
     }, 3000);
 }
 
+<<<<<<< HEAD
 // MetaMask Integration
 async function connectMetaMask() {
     const connectBtn = document.getElementById("connectWallet");
@@ -90,11 +91,14 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
+=======
+>>>>>>> 04b8ef9195580d9cc9cc43badc772ebc02bb6cc5
 // Registration form
 const registerForm = document.getElementById("registerForm");
 if (registerForm) {
     registerForm.addEventListener("submit", (e) => {
         e.preventDefault();
+<<<<<<< HEAD
         
         // Get form data
         const formData = new FormData(registerForm);
@@ -127,6 +131,8 @@ if (registerForm) {
             return;
         }
         
+=======
+>>>>>>> 04b8ef9195580d9cc9cc43badc772ebc02bb6cc5
         showToast("Registered successfully! Redirecting to login...", "success");
         setTimeout(() => {
             window.location.href = "login.html";
@@ -195,9 +201,15 @@ if (loginForm) {
             if (ok) {
                 showToast("OTP verified ✅", "success");
                 setTimeout(() => {
+<<<<<<< HEAD
                     // Get role from sessionStorage and redirect accordingly
                     const userRole = sessionStorage.getItem('userRole') || 'voter';
                     if (userRole === 'admin') {
+=======
+                    const roleSel = document.getElementById("role");
+                    const role = roleSel ? roleSel.value : "user";
+                    if (role === "admin") {
+>>>>>>> 04b8ef9195580d9cc9cc43badc772ebc02bb6cc5
                         window.location.href = "admin.html";
                     } else {
                         window.location.href = "dashboard.html";
@@ -208,4 +220,8 @@ if (loginForm) {
             }
         });
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 04b8ef9195580d9cc9cc43badc772ebc02bb6cc5

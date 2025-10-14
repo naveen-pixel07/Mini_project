@@ -1,6 +1,7 @@
 body {
   font-family: 'Poppins', sans-serif;
   margin: 0;
+<<<<<<< HEAD
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: #1f2a44;
   display: flex;
@@ -34,6 +35,17 @@ header {
   z-index: 1;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+=======
+  background: #f5f7fa;
+  color: #1f2a44;
+}
+
+header {
+  background: #0b3d91;
+  color: #ffffff;
+  padding: 20px;
+  text-align: center;
+>>>>>>> 04b8ef9195580d9cc9cc43badc772ebc02bb6cc5
 }
 
 h2 {
@@ -46,6 +58,7 @@ h2 {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+<<<<<<< HEAD
   margin: 20px auto;
   max-width: 1200px;
   padding: 0 20px;
@@ -126,12 +139,53 @@ h2 {
 
 .quote {
   margin: 30px auto;
+=======
+  margin: 20px;
+}
+
+.candidate-card {
+  background: #ffffff;
+  border: 1px solid #e1e6ef;
+  margin: 15px;
+  padding: 25px;
+  border-radius: 8px;
+  width: 220px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  transition: transform 0.2s;
+}
+
+.candidate-card:hover {
+  transform: translateY(-5px);
+}
+
+.candidate-card button {
+  background: #0b3d91;
+  border: none;
+  padding: 10px;
+  width: 100%;
+  color: #ffffff;
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.candidate-card button:hover {
+  background: #093273;
+}
+
+.quote {
+  margin: 30px;
+>>>>>>> 04b8ef9195580d9cc9cc43badc772ebc02bb6cc5
   text-align: center;
   font-style: italic;
   font-size: 1.1rem;
   color: #34495e;
+<<<<<<< HEAD
   max-width: 600px;
   padding: 0 20px;
+=======
+>>>>>>> 04b8ef9195580d9cc9cc43badc772ebc02bb6cc5
 }
 
 
@@ -183,6 +237,7 @@ h2 {
 .voted-btn:hover {
     background-color: #b2dfdb; /* no hover change */
 }
+<<<<<<< HEAD
 
 /* Responsive Design */
 @media (max-width: 768px) {
@@ -206,3 +261,5 @@ h2 {
     padding: 15px;
   }
 }
+=======
+>>>>>>> 04b8ef9195580d9cc9cc43badc772ebc02bb6cc5

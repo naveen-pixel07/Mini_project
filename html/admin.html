@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Panel</title>
+  <link rel="stylesheet" href="../css/dashboard.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/web3@1.10.0/dist/web3.min.js"></script>
+</head>
+<body>
+  <header>
+    <h1>Election Administration</h1>
+  </header>
+
+  <main style="max-width:700px;margin:20px auto;background:#fff;padding:20px;border-radius:8px;box-shadow:0 4px 12px rgba(0,0,0,0.08);">
+    <h2>Add Candidate</h2>
+    <form id="addCandidateForm">
+      <input id="candName" type="text" placeholder="Candidate Name" required style="width:100%;padding:10px;margin:8px 0;border:1px solid #e1e6ef;border-radius:6px;">
+      <input id="candParty" type="text" placeholder="Party" required style="width:100%;padding:10px;margin:8px 0;border:1px solid #e1e6ef;border-radius:6px;">
+      <button type="submit" style="background:#0b3d91;color:#fff;border:none;padding:10px 16px;border-radius:6px;cursor:pointer;">Add</button>
+    </form>
+
+    <h2 style="margin-top:30px;">Fund Voter</h2>
+    <form id="fundForm">
+      <input id="voterAddress" type="text" placeholder="0xVoterAddress" required style="width:100%;padding:10px;margin:8px 0;border:1px solid #e1e6ef;border-radius:6px;">
+      <input id="fundAmount" type="text" placeholder="Amount in ETH (e.g., 0.02)" value="0.02" style="width:100%;padding:10px;margin:8px 0;border:1px solid #e1e6ef;border-radius:6px;">
+      <button type="submit" style="background:#0b3d91;color:#fff;border:none;padding:10px 16px;border-radius:6px;cursor:pointer;">Fund</button>
+    </form>
+  </main>
+
+  <script src="js/admin.js"></script>
+</body>
+</html>
+
+

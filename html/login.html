@@ -1,80 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>User Login</title>
-  <link rel="stylesheet" href="../css/auth.css">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-</head>
-<body>
-  <div class="form-container">
-    <h2>User Login 🔑</h2>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>User Login</title>
+    <link rel="stylesheet" href="../css/auth.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <div class="form-container" role="main" aria-labelledby="loginTitle">
+      <h2 id="loginTitle">User Login 🔑</h2>
 
-    
-    <!-- Role Display Section -->
-    <div class="role-display" style="text-align: center; margin: 15px 0; padding: 15px; background: #e6eef9; border-radius: 8px; border: 1px solid #c3c9d5;">
-      <strong style="color: #0b3d91;">Currently Logging in as: </strong>
-      <span id="currentRole" style="color: #0b3d91; font-weight: 600; text-transform: capitalize;"></span>
-      <br>
-      <small style="color: #666;">Not correct? <a href="role-selection.html" style="color: #0b3d91; font-weight: 600;">Change Role</a></small>
-    </div>
+      <div class="role-display" aria-live="polite">
+        <strong>Currently logging in as:</strong>
+        <span id="currentRole" style="font-weight:600; text-transform:capitalize; margin-left:6px;">Voter</span>
+        <div style="margin-top:8px; font-size:0.9rem; color:#666;">Not correct? <a href="role-selection.html">Change Role</a></div>
+      </div>
 
-    <form id="loginForm">
-      <input id="aadhaarOrMobile" type="text" placeholder="Aadhaar Number or Mobile" required>
-      <div style="display:flex; gap:10px; align-items:center;">
-        <input id="otpInput" type="text" placeholder="Enter OTP" style="flex:1;">
-        <button type="button" id="sendOtpBtn">Send OTP</button>
+      <form id="loginForm">
+        <input id="aadhaarOrMobile" type="text" placeholder="Aadhaar Number or Mobile" required>
+
+        <div class="otp-row" style="display:flex; gap:10px; align-items:center;">
+          <input id="otpInput" type="text" placeholder="Enter OTP" style="flex:1;">
+          <button type="button" id="sendOtpBtn">Send OTP</button>
+        </div>
+
         <button type="button" id="verifyOtpBtn">Verify OTP</button>
-      </div>
-    </form>
-    <button id="connectWallet">Connect MetaMask</button>
-    <div id="walletStatus" style="margin: 10px 0; padding: 10px; border-radius: 6px; display: none;">
-      <small id="walletAddress"></small>
+      </form>
+
+      <button id="connectWallet">Connect MetaMask</button>
+
+      <div id="walletStatus" style="display:none; margin-top:8px;"><small id="walletAddress"></small></div>
+
+      <p style="margin-top:12px;">Not registered? <a href="register.html">Register here</a></p>
     </div>
-    <p>Not registered? <a href="register.html">Register here</a></p>
-  </div>
 
+    <div class="quote" aria-hidden="true">
+     
+    </div>
 
+    <script src="../js/metamask.js"></script>
+    <script src="../js/auth.js"></script>
+    <script>
+      // Display the selected role
+      const userRole = sessionStorage.getItem('userRole') || 'voter';
+      const roleDisplay = userRole === 'admin' ? 'Administrator' : 'Voter';
+      const currentRoleEl = document.getElementById('currentRole');
+      if (currentRoleEl) currentRoleEl.textContent = roleDisplay;
 
-  <script src="../js/metamask.js"></script>
-  <script src="../js/auth.js"></script>
-  <script>
-    // Display the selected role
-    const userRole = sessionStorage.getItem('userRole') || 'voter';
-    const roleDisplay = userRole === 'admin' ? 'Administrator' : 'Voter';
-    document.getElementById('currentRole').textContent = roleDisplay;
-    
-    // Apply role-specific styling
-    const roleDisplayDiv = document.querySelector('.role-display');
-    if (userRole === 'admin') {
-      roleDisplayDiv.style.background = '#ffe6e6';
-      roleDisplayDiv.style.borderColor = '#b00020';
-    }
-  </script>
-</body>
-</html>
-
-    <form id="loginForm">
-      <select id="role" style="width:100%;padding:12px;margin:10px 0;border-radius:8px;border:1px solid #ccc;font-size:1rem;">
-        <option value="user">Voter</option>
-        <option value="admin">Admin</option>
-      </select>
-      <input id="aadhaarOrMobile" type="text" placeholder="Aadhaar Number or Mobile" required>
-      <div style="display:flex; gap:10px; align-items:center;">
-        <input id="otpInput" type="text" placeholder="Enter OTP" style="flex:1;">
-        <button id="sendOtpBtn">Send OTP</button>
-        <button id="verifyOtpBtn">Verify OTP</button>
-      </div>
-    </form>
-    <button id="connectWallet">Connect MetaMask</button>
-    <p>Not registered? <a href="register.html">Register here</a></p>
-  </div>
-
-  <div class="quote">
-    <p>“Democracy is not just the right to vote, it is the right to live in dignity.”</p>
-  </div>
-
-  <script src="js/metamask.js"></script>
-  <script src="js/auth.js"></script>
-</body>
+      // Apply role-specific styling
+      const roleDisplayDiv = document.querySelector('.role-display');
+      if (roleDisplayDiv && userRole === 'admin') {
+        roleDisplayDiv.style.background = '#ffe6e6';
+        roleDisplayDiv.style.border = '1px solid #b00020';
+      }
+    </script>
+  </body>
 </html>

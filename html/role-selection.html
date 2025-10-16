@@ -36,9 +36,12 @@
     function selectRole(role) {
       // Store role in sessionStorage
       sessionStorage.setItem('userRole', role);
-      
-      // Redirect to login page
-      window.location.href = 'login.html';
+      // If admin, go directly to admin panel, otherwise go to login
+      if (role === 'admin') {
+        window.location.href = 'admin.html';
+      } else {
+        window.location.href = 'register.html';
+      }
     }
   </script>
 </body>

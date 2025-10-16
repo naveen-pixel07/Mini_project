@@ -1,44 +1,44 @@
 // auth.js
 // Handles registration, login and OTP verification with smooth toast notifications
 
-function showToast(message, type = "success") {
-    const toast = document.createElement("div");
+function showToast(message, type = 'success') {
+    const toast = document.createElement('div');
     toast.className = `toast ${type}`;
     toast.innerText = message;
     document.body.appendChild(toast);
 
-    setTimeout(() => toast.classList.add("show"), 100);
+    setTimeout(() => toast.classList.add('show'), 100);
     setTimeout(() => {
-        toast.classList.remove("show");
+        toast.classList.remove('show');
         setTimeout(() => toast.remove(), 300);
     }, 3000);
 }
 
-<<<<<<< HEAD
 // MetaMask Integration
 async function connectMetaMask() {
-    const connectBtn = document.getElementById("connectWallet");
-    const originalText = connectBtn.textContent;
-    
+    const connectBtn = document.getElementById('connectWallet');
+    const originalText = connectBtn ? connectBtn.textContent : 'Connect MetaMask';
+
     try {
-        // Show loading state
-        connectBtn.textContent = "Connecting...";
-        connectBtn.disabled = true;
-        
-        // Use the connectWallet function from metamask.js
-        const userAddress = await window.connectWallet();
-        
-        if (!userAddress) {
-            return; // Error already handled by connectWallet
+        if (connectBtn) {
+            connectBtn.textContent = 'Connecting...';
+            connectBtn.disabled = true;
         }
-        
+
+        // Use the connectWallet function from metamask.js (exposed to window)
+        const userAddress = (window.connectWallet) ? await window.connectWallet() : null;
+        if (!userAddress) {
+            showToast('Could not connect wallet', 'error');
+            return;
+        }
+
         // Show wallet status
-        const walletStatus = document.getElementById("walletStatus");
-        const walletAddress = document.getElementById("walletAddress");
+        const walletStatus = document.getElementById('walletStatus');
+        const walletAddress = document.getElementById('walletAddress');
         if (walletStatus && walletAddress) {
-            walletStatus.style.display = "block";
-            walletStatus.style.background = "#e6f7ff";
-            walletStatus.style.border = "1px solid #91d5ff";
+            walletStatus.style.display = 'block';
+            walletStatus.style.background = '#e6f7ff';
+            walletStatus.style.border = '1px solid #91d5ff';
             walletAddress.textContent = `Connected: ${userAddress.slice(0, 6)}...${userAddress.slice(-4)}`;
         }
 
@@ -48,33 +48,24 @@ async function connectMetaMask() {
         try {
             // Sign the message
             const signature = await window.ethereum.request({
-                method: "personal_sign",
+                method: 'personal_sign',
                 params: [messageToSign, userAddress]
             });
 
-            showToast("Signature verified! Logging in...", "success");
-            
-            // Here you would typically send to backend for verification
-            // For now, we'll simulate a successful login
-            
-            // Get the user role from session storage
-            const userRole = sessionStorage.getItem('userRole') || 'voter';
-            
+            showToast('Signature verified! Logging in...', 'success');
             // Redirect based on role
+            const userRole = sessionStorage.getItem('userRole') || 'voter';
             setTimeout(() => {
                 window.location.href = userRole === 'admin' ? 'admin.html' : 'dashboard.html';
-            }, 1500);
-            
-        } catch (error) {
-            console.error('Signature error:', error);
-            showToast("Signature failed or rejected", "error");
+            }, 800);
+        } catch (err) {
+            console.error('Signature error:', err);
+            showToast('Signature failed or rejected', 'error');
         }
-
-    } catch (error) {
-        console.error('MetaMask connection error:', error);
-        showToast("MetaMask connection failed", "error");
+    } catch (err) {
+        console.error('MetaMask connection error:', err);
+        showToast('MetaMask connection failed', 'error');
     } finally {
-        // Reset button state
         if (connectBtn) {
             connectBtn.textContent = originalText;
             connectBtn.disabled = false;
@@ -83,56 +74,17 @@ async function connectMetaMask() {
 }
 
 // Connect MetaMask button event listener
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const connectWalletBtn = document.getElementById('connectWallet');
     if (connectWalletBtn) {
         connectWalletBtn.addEventListener('click', connectMetaMask);
     }
 });
-
-
-=======
->>>>>>> 04b8ef9195580d9cc9cc43badc772ebc02bb6cc5
 // Registration form
 const registerForm = document.getElementById("registerForm");
 if (registerForm) {
     registerForm.addEventListener("submit", (e) => {
         e.preventDefault();
-<<<<<<< HEAD
-        
-        // Get form data
-        const formData = new FormData(registerForm);
-        const fullName = formData.get('fullName');
-        const dateOfBirth = formData.get('dateOfBirth');
-        const mobileNumber = formData.get('mobileNumber');
-        const biometric = formData.get('biometric');
-        
-        // Basic validation
-        if (!fullName || !dateOfBirth || !mobileNumber || !biometric) {
-            showToast("Please fill in all fields", "error");
-            return;
-        }
-        
-        // Validate mobile number format
-        const mobileRegex = /^[0-9]{10}$/;
-        if (!mobileRegex.test(mobileNumber)) {
-            showToast("Please enter a valid 10-digit mobile number", "error");
-            return;
-        }
-        
-        // Validate age (must be 18+)
-        const today = new Date();
-        const birthDate = new Date(dateOfBirth);
-        const age = today.getFullYear() - birthDate.getFullYear();
-        const monthDiff = today.getMonth() - birthDate.getMonth();
-        
-        if (age < 18 || (age === 18 && monthDiff < 0)) {
-            showToast("You must be 18 years or older to register", "error");
-            return;
-        }
-        
-=======
->>>>>>> 04b8ef9195580d9cc9cc43badc772ebc02bb6cc5
         showToast("Registered successfully! Redirecting to login...", "success");
         setTimeout(() => {
             window.location.href = "login.html";
@@ -201,18 +153,12 @@ if (loginForm) {
             if (ok) {
                 showToast("OTP verified ✅", "success");
                 setTimeout(() => {
-<<<<<<< HEAD
                     // Get role from sessionStorage and redirect accordingly
                     const userRole = sessionStorage.getItem('userRole') || 'voter';
                     if (userRole === 'admin') {
-=======
-                    const roleSel = document.getElementById("role");
-                    const role = roleSel ? roleSel.value : "user";
-                    if (role === "admin") {
->>>>>>> 04b8ef9195580d9cc9cc43badc772ebc02bb6cc5
-                        window.location.href = "admin.html";
+                        window.location.href = 'admin.html';
                     } else {
-                        window.location.href = "dashboard.html";
+                        window.location.href = 'dashboard.html';
                     }
                 }, 800);
             } else {
@@ -220,8 +166,4 @@ if (loginForm) {
             }
         });
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 04b8ef9195580d9cc9cc43badc772ebc02bb6cc5

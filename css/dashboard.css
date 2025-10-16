@@ -58,7 +58,6 @@ h2 {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-<<<<<<< HEAD
   margin: 20px auto;
   max-width: 1200px;
   padding: 0 20px;
@@ -181,11 +180,9 @@ h2 {
   font-style: italic;
   font-size: 1.1rem;
   color: #34495e;
-<<<<<<< HEAD
   max-width: 600px;
   padding: 0 20px;
-=======
->>>>>>> 04b8ef9195580d9cc9cc43badc772ebc02bb6cc5
+
 }
 
 

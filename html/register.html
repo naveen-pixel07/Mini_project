@@ -42,7 +42,7 @@
     const userRole = sessionStorage.getItem('userRole') || 'voter';
     const roleDisplay = userRole === 'admin' ? 'Administrator' : 'Voter';
     document.getElementById('currentRole').textContent = roleDisplay;
-    
+
     // Apply role-specific styling
     const roleDisplayDiv = document.querySelector('.role-display');
     if (userRole === 'admin') {

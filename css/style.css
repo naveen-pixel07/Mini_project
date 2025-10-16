@@ -70,16 +70,14 @@ header h1 {
   transition: all 0.3s ease;
 }
 
-.card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(255, 255, 255, 0.3);
-  background: #ffffff;
-  max-width: 450px;
-  margin: 80px auto;
-  padding: 40px;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+.card {
+  transition: transform 0.28s ease, box-shadow 0.28s ease, background 0.28s ease;
+}
 
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 28px 60px rgba(0, 0, 0, 0.12);
+  /* keep size/layout stable on hover to avoid pointer reflow */
 }
 
 .card h2 {
